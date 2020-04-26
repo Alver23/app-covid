@@ -1,0 +1,14 @@
+.card {
+  &__container {
+    margin: 4px;
+    /*max-width: 420px;*/
+  }
+  &__item {
+    &-container {
+      height: 440px;
+    }
+    &-count {
+      padding: 4px;
+    }
+  }
+}

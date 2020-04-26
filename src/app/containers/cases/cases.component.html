@@ -1,0 +1,76 @@
+<div class="cases__container">
+  <div class="cases__card">
+    <app-card
+      *ngIf="casesByCity"
+      title="Total Confirmados"
+      [total]="casesByCity.total"
+    >
+    </app-card>
+    <mat-tab-group>
+      <mat-tab label="Ciudad">
+        <app-card
+          *ngIf="casesByCity"
+          subTitle="Total por ciudad"
+          [items]="casesByCity.items"
+        >
+        </app-card>
+      </mat-tab>
+      <mat-tab label="Departamento">
+        <app-card
+          *ngIf="casesByState"
+          subTitle="Total por departamento"
+          [items]="casesByState.items"
+        >
+        </app-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="cases__card">
+    <mat-tab-group>
+      <mat-tab label="Muertos">
+        <app-card
+          *ngIf="casesDeaths"
+          title="Total Muertos"
+          subTitle="Total por ciudad"
+          [total]="casesDeaths.total"
+          [items]="casesDeaths.items"
+        >
+        </app-card>
+      </mat-tab>
+      <mat-tab label="Recuperados">
+        <app-card
+          *ngIf="casesRecovered"
+          title="Total Recuperados"
+          subTitle="Total por ciudad"
+          [total]="casesRecovered.total"
+          [items]="casesRecovered.items"
+        >
+        </app-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="cases__card">
+    <mat-tab-group>
+      <mat-tab label="Hospital">
+        <app-card
+          *ngIf="casesHospital"
+          title="Total Hospitalizados"
+          subTitle="Total por ciudad"
+          [total]="casesHospital.total"
+          [items]="casesHospital.items"
+        >
+        </app-card>
+      </mat-tab>
+      <mat-tab label="Hospital UCI">
+        <app-card
+          *ngIf="casesHospitalUCI"
+          title="Total Hospitalizados UCI"
+          subTitle="Total por ciudad"
+          [total]="casesHospitalUCI.total"
+          [items]="casesHospitalUCI.items"
+        >
+        </app-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

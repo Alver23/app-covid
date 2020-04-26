@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 interface Items {
   name: string;
-  value: number;
+  count: number;
 }
 
 @Component({
@@ -13,8 +13,11 @@ interface Items {
 export class CardComponent implements OnInit {
 
   @Input() title: string;
+  @Input() subTitle: string;
   @Input() total: number;
   @Input() items: Items[];
+
+
   constructor() { }
 
   ngOnInit(): void {

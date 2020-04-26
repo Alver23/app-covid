@@ -1,0 +1,11 @@
+.cases {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    margin: 0 12px;
+  }
+}
