@@ -1,7 +1,7 @@
 <mat-card class="card__container" *ngIf="title && total">
   <mat-card-header>
     <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-subtitle>{{ total }}</mat-card-subtitle>
+    <mat-card-title  [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ total }}</mat-card-title>
   </mat-card-header>
 </mat-card>
 <mat-card class="card__container" *ngIf="items">
@@ -14,8 +14,8 @@
       <mat-list role="list">
         <div *cdkVirtualFor="let item of items">
           <mat-list-item role="listitem">
-            <span>{{ item.name }} </span>
-            <span class="card__item-count">{{ item.count | number }}</span>
+            <span>{{ item.name }}</span>
+            <span class="card__item-count" [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ item.count | number }}</span>
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>

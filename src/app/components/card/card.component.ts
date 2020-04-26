@@ -16,11 +16,14 @@ export class CardComponent implements OnInit {
   @Input() subTitle: string;
   @Input() total: number;
   @Input() items: Items[];
+  @Input() color: 'green' | 'red';
 
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log('color', this.color)
   }
+
 
 }

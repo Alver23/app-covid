@@ -4,6 +4,7 @@
       *ngIf="casesByCity"
       title="Total Confirmados"
       [total]="casesByCity.total"
+      color="red"
     >
     </app-card>
     <mat-tab-group>
@@ -12,6 +13,7 @@
           *ngIf="casesByCity"
           subTitle="Total por ciudad"
           [items]="casesByCity.items"
+          color="red"
         >
         </app-card>
       </mat-tab>
@@ -20,6 +22,7 @@
           *ngIf="casesByState"
           subTitle="Total por departamento"
           [items]="casesByState.items"
+          color="red"
         >
         </app-card>
       </mat-tab>
@@ -34,6 +37,7 @@
           subTitle="Total por ciudad"
           [total]="casesDeaths.total"
           [items]="casesDeaths.items"
+          color="red"
         >
         </app-card>
       </mat-tab>
@@ -44,6 +48,7 @@
           subTitle="Total por ciudad"
           [total]="casesRecovered.total"
           [items]="casesRecovered.items"
+          color="green"
         >
         </app-card>
       </mat-tab>
