@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 interface Items {
   name: string;
@@ -10,20 +10,11 @@ interface Items {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() title: string;
   @Input() subTitle: string;
   @Input() total: number;
   @Input() items: Items[];
   @Input() color: 'green' | 'red';
-
-
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log('color', this.color)
-  }
-
-
 }

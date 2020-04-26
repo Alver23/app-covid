@@ -1,7 +1,10 @@
 export const environment = {
   production: true,
   api: {
-    base: 'http://localhost:3000/api/',
+    base: 'https://api-covid.now.sh/api/',
     reports: 'reports',
+    getUrl(url) {
+      return `${this.base}${this[url]}`;
+    }
   }
 };
