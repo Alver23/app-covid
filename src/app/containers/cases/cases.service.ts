@@ -13,9 +13,12 @@ export class CasesService {
     private readonly covidService: CovidService,
   ) { }
 
-  getCases(): Observable<any> {
+  getTotalCases(): Observable<any> {
+    const queryString = [
+      { name : '$select', value: 'COUNT(*) as total' },
+    ];
     return this.covidService
-      .getReports()
+      .getReports(queryString)
       .pipe(
         map(items => {
           let response;
@@ -28,16 +31,20 @@ export class CasesService {
   }
 
   getCasesByCity(): Observable<any> {
-    const queryParams = [
-      {name: 'type', value: 'city'},
+    const queryString = [
+      { name: '$select', value: 'ciudad_de_ubicaci_n as name,COUNT(*) as total' },
+      { name: '$group', value: 'ciudad_de_ubicaci_n' },
+      { name: '$order', value: 'total DESC' },
     ];
     return this.covidService
-      .getReports(queryParams);
+      .getReports(queryString);
   }
 
   getCasesByState(): Observable<any> {
     const queryParams = [
-      {name: 'type', value: 'state'},
+      { name: '$select', value: 'departamento as name,COUNT(*) as total' },
+      { name: '$group', value: 'departamento' },
+      { name: '$order', value: 'total DESC' },
     ];
     return this.covidService
       .getReports(queryParams);
@@ -51,11 +58,21 @@ export class CasesService {
       .getReports(queryParams);
   }
 
-  getCasesByAttention(value: string): Observable<any> {
+  getCasesByAttention(value: string, field: string = 'ciudad_de_ubicaci_n'): Observable<any> {
     const queryParams = [
-      {name: 'type', value: 'city'},
-      {name: 'field', value: 'attention'},
-      {name: 'value', value},
+      { name: '$select', value: `${field} as name,COUNT(*) as total` },
+      { name: '$group', value: field },
+      { name: '$where', value: `atenci_n in('${value}')` },
+      { name: '$order', value: 'total DESC' },
+    ];
+    return this.covidService
+      .getReports(queryParams);
+  }
+
+  getTotalCasesByAttention(value: string) {
+    const queryParams = [
+      { name: '$select', value: 'COUNT(*) as total' },
+      { name: '$where', value: `atenci_n in('${value}')` },
     ];
     return this.covidService
       .getReports(queryParams);
