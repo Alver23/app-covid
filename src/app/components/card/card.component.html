@@ -1,7 +1,7 @@
 <mat-card class="card__container" *ngIf="title && total">
-  <mat-card-header>
+  <mat-card-header class="card__header">
     <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-title  [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ total }}</mat-card-title>
+    <mat-card-title  [ngClass]="{'green': color === 'green', 'red': color === 'red'}" class="card__title-total">{{ total }}</mat-card-title>
   </mat-card-header>
 </mat-card>
 <mat-card class="card__container" *ngIf="items">
@@ -12,13 +12,17 @@
   <mat-card-content>
     <cdk-virtual-scroll-viewport itemSize="20" class="card__item-container">
       <mat-list role="list">
-        <div *cdkVirtualFor="let item of items">
-          <mat-list-item role="listitem">
+        <ng-container *cdkVirtualFor="let item of items; isLast as last">
+          <!--<mat-list-item role="listitem">
             <span>{{ item.name }}</span>
-            <span class="card__item-count" [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ item.count | number }}</span>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </div>
+            <span class="card__item-count" [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ item.total | number }}</span>
+          </mat-list-item>-->
+          <div class="card__item">
+            <span>{{ item.name }}</span>
+            <span class="card__item-count" [ngClass]="{'green': color === 'green', 'red': color === 'red'}">{{ item.total | number }}</span>
+          </div>
+          <mat-divider *ngIf="!last"></mat-divider>
+        </ng-container>
       </mat-list>
     </cdk-virtual-scroll-viewport>
   </mat-card-content>

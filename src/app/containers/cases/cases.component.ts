@@ -1,11 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { CasesService } from './cases.service';
 import {combineLatest, Subscription} from 'rxjs';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
-
-interface ICases {
+interface IItems {
+  name: string;
   total: number;
-  items: any[];
+}
+interface ICases {
+  total?: number;
+  items: IItems[];
 }
 @Component({
   selector: 'app-cases',
@@ -14,18 +18,27 @@ interface ICases {
 })
 export class CasesComponent implements OnInit, OnDestroy {
 
+  public totalCases: number;
+  public totalDeaths: number;
+  public totalRecovered: number;
   public casesByCity: ICases;
   public casesByState: ICases;
-  public casesDeaths: ICases;
-  public casesRecovered: ICases;
+  public casesDeaths: any;
+  public casesRecovered: any;
   public casesHospital: ICases;
   public casesHospitalUCI: ICases;
+  public tabHeaderPosition: string;
+  public isMobile: boolean;
 
   private $subscription: Subscription;
 
   constructor(
-    private casesService: CasesService,
-  ) { }
+    private readonly casesService: CasesService,
+    private readonly deviceDetectorService: DeviceDetectorService,
+  ) {
+    this.isMobile = this.deviceDetectorService.isMobile();
+    this.tabHeaderPosition = this.deviceDetectorService.isDesktop() ? 'below' : 'above';
+  }
 
   ngOnInit(): void {
     this.setSubscribe();
@@ -41,25 +54,39 @@ export class CasesComponent implements OnInit, OnDestroy {
     const hospital = 'Hospital';
     const hospitalUCI = 'Hospital UCI';
     this.$subscription = combineLatest(
-      this.casesService.getCases(),
+      this.casesService.getTotalCases(),
       this.casesService.getCasesByCity(),
+      this.casesService.getTotalCasesByAttention(death),
+      this.casesService.getTotalCasesByAttention(recovered),
       this.casesService.getCasesByState(),
-      this.casesService.getTotalAttention(),
-      this.casesService.getCasesByAttention(death),
       this.casesService.getCasesByAttention(recovered),
-      this.casesService.getCasesByAttention(hospital),
-      this.casesService.getCasesByAttention(hospitalUCI),
+      this.casesService.getCasesByAttention(death),
+      this.casesService.getCasesByAttention(recovered, 'departamento'),
+      this.casesService.getCasesByAttention(death, 'departamento'),
     )
-      .subscribe(([totalCases$, casesByCity$, casesByState$, attention$, casesByDeaths$, casesByRecovered$, hospital$, hospitalUCI$]) => {
+      .subscribe(([totalCases$, casesByCity$, totalDeaths$, totalRecovered$, casesByState$, casesByRecovered$, casesBydeaths$, casesByRecoveredState$, casesBydeathsState$]) => {
+        this.totalCases = totalCases$.total;
+        this.totalDeaths = totalDeaths$[0].total;
+        this.totalRecovered = totalRecovered$[0].total;
         this.casesByCity = {
-          total: totalCases$.count,
           items: casesByCity$,
         };
 
         this.casesByState = {
-          total: totalCases$.count,
           items: casesByState$,
         };
+
+        this.casesRecovered = {
+          items: casesByRecovered$,
+          states: casesByRecoveredState$,
+        };
+
+        this.casesDeaths = {
+          items: casesBydeaths$,
+          states: casesBydeathsState$,
+        };
+
+        /*
 
         const deathData = attention$.find(item => item.name === death);
         const recoveredData = attention$.find(item => item.name === recovered);
@@ -96,7 +123,7 @@ export class CasesComponent implements OnInit, OnDestroy {
             total: count,
             items: hospitalUCI$,
           };
-        }
+        }*/
       });
   }
 

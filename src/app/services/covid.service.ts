@@ -12,6 +12,7 @@ interface IQueryParams {
 }
 
 interface IReport {
+  total: number;
   name: string;
   count: number;
 }
@@ -36,7 +37,7 @@ interface ICovidResponse {
 })
 export class CovidService {
 
-  private readonly reportUrl = environment.api.getUrl('reports');
+  private readonly reportUrl = environment.api.getUrl('reportsV2');
 
   constructor(
     private readonly http: HttpClient,
@@ -56,10 +57,10 @@ export class CovidService {
     return result;
   }
 
-  public getReports(queryParams?: IQueryParams[]): Observable<IReport[]> {
+  public getReports(queryParams?: IQueryParams[]): Observable<any[]> {
     const params = this.getQueryParams(queryParams);
     let url = this.reportUrl;
     if (params) { url += params; }
-    return this.http.get<IReport[]>(url);
+    return this.http.get<any[]>(url);
   }
 }

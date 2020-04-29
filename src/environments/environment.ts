@@ -7,6 +7,7 @@ export const environment = {
   api: {
     base: 'http://localhost:3000/api/',
     reports: 'reports',
+    reportsV2: 'v2/reports',
     getUrl(url) {
       return `${this.base}${this[url]}`;
     }

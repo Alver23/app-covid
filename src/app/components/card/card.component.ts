@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 interface Items {
   name: string;
-  count: number;
+  total: number;
 }
 
 @Component({
