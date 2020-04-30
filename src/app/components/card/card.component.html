@@ -3,7 +3,7 @@
     <mat-card-title *ngIf="title && total">{{ title }}</mat-card-title>
     <mat-card-title
       *ngIf="total"
-      [ngClass]="{'green': color === 'green', 'red': color === 'red', 'yellow': color === 'yellow'}"
+      [ngClass]="color"
       class="card__title-total">
       {{ total | number: '1.0-0' }}
     </mat-card-title>
@@ -15,7 +15,7 @@
       ></ngx-skeleton-loader>
       <ngx-skeleton-loader
         count="2"
-        [theme]="titileTheme"
+        [theme]="titleTheme"
       ></ngx-skeleton-loader>
     </div>
   </ng-container>

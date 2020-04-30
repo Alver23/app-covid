@@ -18,7 +18,7 @@ export class CardComponent {
     height: '16px',
   };
 
-  public readonly titileTheme = {
+  public readonly titleTheme = {
     width: '100px',
     display: 'flex',
     height: '12px',

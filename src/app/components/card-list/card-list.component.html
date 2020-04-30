@@ -8,7 +8,7 @@
       <ng-container *cdkVirtualFor="let item of items; isLast as last">
         <div class="card-list__item">
           <span>{{ item.name }}</span>
-          <span class="card-list__item-count" [ngClass]="{'green': color === 'green', 'red': color === 'red', 'yellow': color === 'yellow'}">{{ item.total | number }}</span>
+          <span class="card-list__item-count" [ngClass]="color">{{ item.total | number }}</span>
         </div>
         <mat-divider *ngIf="!last"></mat-divider>
       </ng-container>
