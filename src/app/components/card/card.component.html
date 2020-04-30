@@ -3,7 +3,7 @@
     <mat-card-title *ngIf="title && total">{{ title }}</mat-card-title>
     <mat-card-title
       *ngIf="total"
-      [ngClass]="{'green': color === 'green', 'red': color === 'red'}"
+      [ngClass]="{'green': color === 'green', 'red': color === 'red', 'yellow': color === 'yellow'}"
       class="card__title-total">
       {{ total | number: '1.0-0' }}
     </mat-card-title>

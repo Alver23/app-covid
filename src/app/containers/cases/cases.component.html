@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-4 col-lg-4 col-xl-4">
     <app-card
-      color="red"
+      color="yellow"
       title="Casos Confirmados"
       [loading]="loading"
       [total]="totalCases"
@@ -10,7 +10,7 @@
     <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
       <mat-tab label="Ciudad">
         <app-card-list
-          color="red"
+          color="yellow"
           [loading]="loading"
           [items]="casesConfirmed.cities"
         >
@@ -18,7 +18,7 @@
       </mat-tab>
       <mat-tab label="Departamento">
         <app-card-list
-          color="red"
+          color="yellow"
           [loading]="loading"
           [items]="casesConfirmed.states"
         >
