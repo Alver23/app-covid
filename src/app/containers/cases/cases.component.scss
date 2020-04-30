@@ -8,4 +8,11 @@
   &__card {
     margin: 0 12px;
   }
+
+  &__skeleton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -1,85 +1,85 @@
 <div class="row">
   <div class="col-md-4 col-lg-4 col-xl-4">
     <app-card
-      *ngIf="totalCases"
-      title="Casos Confirmados"
-      [total]="totalCases"
       color="red"
+      title="Casos Confirmados"
+      [loading]="loading"
+      [total]="totalCases"
     >
     </app-card>
     <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
       <mat-tab label="Ciudad">
-        <app-card
-          *ngIf="casesByCity"
-          [items]="casesByCity.items"
+        <app-card-list
           color="red"
+          [loading]="loading"
+          [items]="casesConfirmed.cities"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
       <mat-tab label="Departamento">
-        <app-card
-          *ngIf="casesByState"
-          [items]="casesByState.items"
+        <app-card-list
           color="red"
+          [loading]="loading"
+          [items]="casesConfirmed.states"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
     </mat-tab-group>
     <mat-divider *ngIf="isMobile"></mat-divider>
   </div>
   <div class="col-md-4 col-lg-4 cols-xl-4">
     <app-card
-      *ngIf="totalDeaths && casesDeaths"
-      title="Fallecidos"
-      [total]="totalDeaths"
       color="red"
+      title="Fallecidos"
+      [loading]="loading"
+      [total]="totalDeaths"
     >
     </app-card>
     <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
       <mat-tab label="Ciudad">
-        <app-card
-          *ngIf="casesDeaths"
-          [items]="casesDeaths.items"
+        <app-card-list
           color="red"
+          [loading]="loading"
+          [items]="casesDeaths.cities"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
       <mat-tab label="Departamento">
-        <app-card
-          *ngIf="casesDeaths"
-          [items]="casesDeaths.states"
+        <app-card-list
           color="red"
+          [loading]="loading"
+          [items]="casesDeaths.states"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
     </mat-tab-group>
     <mat-divider *ngIf="isMobile"></mat-divider>
   </div>
   <div class="col-md-4 col-lg-4 col-xl-4">
     <app-card
-      *ngIf="totalRecovered && casesRecovered"
-      title="Recuperados"
-      [total]="totalRecovered"
       color="green"
+      title="Recuperados"
+      [loading]="loading"
+      [total]="totalRecovered"
     >
     </app-card>
 
     <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
       <mat-tab label="Ciudad">
-        <app-card
-          *ngIf="casesRecovered"
-          [items]="casesRecovered.items"
+        <app-card-list
           color="green"
+          [loading]="loading"
+          [items]="casesRecovered.cities"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
       <mat-tab label="Departamento">
-        <app-card
-          *ngIf="casesRecovered"
-          [items]="casesRecovered.states"
+        <app-card-list
           color="green"
+          [loading]="loading"
+          [items]="casesRecovered.states"
         >
-        </app-card>
+        </app-card-list>
       </mat-tab>
     </mat-tab-group>
   </div>

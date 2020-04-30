@@ -1,47 +1,19 @@
-@import "./../../../assets/scss/tools/response-to";
-@import "./../../../assets/scss/variables/variables";
-
 .card {
+  &__container {
+    margin: 8px 0;
+  }
+
   &__title-total {
     font-size: 40px;
     font-weight: bold;
     display: flex;
     justify-content: center;
   }
+
   &__header {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
   }
-  &__container {
-    margin: 4px;
-  }
-  &__item {
-    padding: 8px 0px;
-    font-size: $font-size-md;
-    &-container {
-      height: 200px;
-      @include respond-to(tb dt) {
-        height: 440px;
-      }
-    }
-    &-count {
-      padding: 4px;
-      font-size: $font-size-md;
-      font-weight: bold;
-    }
-  }
-}
-
-
-
-.red {
-  color: #FF1744 !important;
-  font-weight: bold;
-}
-
-.green {
-  color: #43A047 !important;
-  font-weight: bold;
 }

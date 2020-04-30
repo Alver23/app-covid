@@ -5,7 +5,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 
 // Material Dependencies
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 
 // Components
 import { CasesComponent } from './cases.component';
@@ -15,7 +15,7 @@ import { CasesService } from './cases.service';
 
 // Modules
 import { CardModule } from '../../components/card/card.module';
-import {MatDividerModule} from '@angular/material/divider';
+import { CardListModule } from '../../components/card-list/card-list.module';
 
 @NgModule({
   declarations: [CasesComponent],
@@ -23,9 +23,9 @@ import {MatDividerModule} from '@angular/material/divider';
     CommonModule,
     CardModule,
     MatTabsModule,
-    MatGridListModule,
     DeviceDetectorModule.forRoot(),
-    MatDividerModule
+    MatDividerModule,
+    CardListModule,
   ],
   providers: [
     CasesService,

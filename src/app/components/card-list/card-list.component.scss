@@ -1,0 +1,23 @@
+@import "./../../../assets/scss/tools/response-to";
+@import "./../../../assets/scss/variables/variables";
+
+.card-list {
+  &__container {
+    margin: 8px 0;
+  }
+  &__item {
+    padding: 8px 0px;
+    font-size: $font-size-md;
+    &-container {
+      height: 200px;
+      @include respond-to(tb dt) {
+        height: 360px;
+      }
+    }
+    &-count {
+      padding: 4px;
+      font-size: $font-size-md;
+      font-weight: bold;
+    }
+  }
+}

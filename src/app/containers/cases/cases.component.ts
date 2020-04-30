@@ -3,14 +3,6 @@ import { CasesService } from './cases.service';
 import {combineLatest, Subscription} from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
-interface IItems {
-  name: string;
-  total: number;
-}
-interface ICases {
-  total?: number;
-  items: IItems[];
-}
 @Component({
   selector: 'app-cases',
   templateUrl: './cases.component.html',
@@ -21,14 +13,12 @@ export class CasesComponent implements OnInit, OnDestroy {
   public totalCases: number;
   public totalDeaths: number;
   public totalRecovered: number;
-  public casesByCity: ICases;
-  public casesByState: ICases;
-  public casesDeaths: any;
-  public casesRecovered: any;
-  public casesHospital: ICases;
-  public casesHospitalUCI: ICases;
+  public casesConfirmed: any = {};
+  public casesDeaths: any = {};
+  public casesRecovered: any = {};
   public tabHeaderPosition: string;
   public isMobile: boolean;
+  public loading: boolean;
 
   private $subscription: Subscription;
 
@@ -53,6 +43,7 @@ export class CasesComponent implements OnInit, OnDestroy {
     const recovered = 'Recuperado';
     const hospital = 'Hospital';
     const hospitalUCI = 'Hospital UCI';
+    this.loading = true;
     this.$subscription = combineLatest(
       this.casesService.getTotalCases(),
       this.casesService.getCasesByCity(),
@@ -68,62 +59,22 @@ export class CasesComponent implements OnInit, OnDestroy {
         this.totalCases = totalCases$.total;
         this.totalDeaths = totalDeaths$[0].total;
         this.totalRecovered = totalRecovered$[0].total;
-        this.casesByCity = {
-          items: casesByCity$,
-        };
-
-        this.casesByState = {
-          items: casesByState$,
+        this.casesConfirmed = {
+          cities: casesByCity$,
+          states: casesByState$,
         };
 
         this.casesRecovered = {
-          items: casesByRecovered$,
+          cities: casesByRecovered$,
           states: casesByRecoveredState$,
         };
 
         this.casesDeaths = {
-          items: casesBydeaths$,
+          cities: casesBydeaths$,
           states: casesBydeathsState$,
         };
 
-        /*
-
-        const deathData = attention$.find(item => item.name === death);
-        const recoveredData = attention$.find(item => item.name === recovered);
-        const hospitalData = attention$.find(item => item.name === hospital);
-        const hospitalUCIData = attention$.find(item => item.name === hospitalUCI);
-
-        if (deathData) {
-          const { count } = deathData;
-          this.casesDeaths = {
-            total: count,
-            items: casesByDeaths$,
-          };
-        }
-
-        if (recoveredData) {
-          const { count } = recoveredData;
-          this.casesRecovered = {
-            total: count,
-            items: casesByRecovered$,
-          };
-        }
-
-        if (hospitalData) {
-          const { count } = hospitalData;
-          this.casesHospital = {
-            total: count,
-            items: hospital$,
-          };
-        }
-
-        if (hospitalUCIData) {
-          const { count } = hospitalUCIData;
-          this.casesHospitalUCI = {
-            total: count,
-            items: hospitalUCI$,
-          };
-        }*/
+        this.loading = false;
       });
   }
 

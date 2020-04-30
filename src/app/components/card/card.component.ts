@@ -1,10 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-interface Items {
-  name: string;
-  total: number;
-}
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -13,8 +8,19 @@ interface Items {
 export class CardComponent {
 
   @Input() title: string;
-  @Input() subTitle: string;
   @Input() total: number;
-  @Input() items: Items[];
   @Input() color: 'green' | 'red';
+  @Input() loading: boolean;
+
+  public readonly priceTheme = {
+    width: '172px',
+    display: 'flex',
+    height: '16px',
+  };
+
+  public readonly titileTheme = {
+    width: '100px',
+    display: 'flex',
+    height: '12px',
+  };
 }

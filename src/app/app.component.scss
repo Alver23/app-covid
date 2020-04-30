@@ -1,14 +1,5 @@
-/*.container-fluid {
-  padding: 0px 16px;
-}*/
-
-
 .sidenav-container {
   height: 100%;
-}
-
-.toolbar-container {
-  z-index: 1000 !important;
 }
 
 .sidenav {
@@ -17,10 +8,4 @@
 
 .sidenav .mat-toolbar {
   background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
 }

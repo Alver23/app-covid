@@ -5,7 +5,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 // Material Modules
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 
 // Components
@@ -13,6 +12,7 @@ import { CardComponent } from './card.component';
 
 
 import localeEs from '@angular/common/locales/es-CO';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 registerLocaleData(localeEs, 'es-CO');
 
@@ -22,9 +22,9 @@ registerLocaleData(localeEs, 'es-CO');
   imports: [
     CommonModule,
     MatCardModule,
-    MatListModule,
     ScrollingModule,
     MatDividerModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-CO' }
