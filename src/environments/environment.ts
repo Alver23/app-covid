@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   api: {
     base: 'http://localhost:3000/api/',
-    reports: 'reports',
-    reportsV2: 'v2/reports',
+    cases: 'cases',
+    casesRecovered: 'cases/recovered',
+    casesDeaths: 'cases/deaths',
     getUrl(url) {
       return `${this.base}${this[url]}`;
     }

@@ -1,7 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { CasesService } from './cases.service';
-import {combineLatest, Subscription} from 'rxjs';
+// Dependencies
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
+
+// Services
+import {CovidService} from '../../services/covid.service';
 
 @Component({
   selector: 'app-cases',
@@ -10,9 +13,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class CasesComponent implements OnInit, OnDestroy {
 
-  public totalCases: number;
-  public totalDeaths: number;
-  public totalRecovered: number;
+  public loadingConfirmed: boolean;
+  public loadingDeaths: boolean;
+  public loadingRecovered: boolean;
+
   public casesConfirmed: any = {};
   public casesDeaths: any = {};
   public casesRecovered: any = {};
@@ -21,9 +25,12 @@ export class CasesComponent implements OnInit, OnDestroy {
   public loading: boolean;
 
   private $subscription: Subscription;
+  private casesDeathSuscription$: Subscription;
+  private casesConfirmedSuscription$: Subscription;
+  private casesRecoveredSuscription$: Subscription;
 
   constructor(
-    private readonly casesService: CasesService,
+    private readonly covidService: CovidService,
     private readonly deviceDetectorService: DeviceDetectorService,
   ) {
     this.isMobile = this.deviceDetectorService.isMobile();
@@ -35,46 +42,30 @@ export class CasesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.$subscription && this.$subscription.unsubscribe();
+    this.casesDeathSuscription$ && this.casesDeathSuscription$.unsubscribe();
+    this.casesConfirmedSuscription$ && this.casesConfirmedSuscription$.unsubscribe();
+    this.casesRecoveredSuscription$ && this.casesRecoveredSuscription$.unsubscribe();
   }
 
   private setSubscribe(): void {
-    const death = 'Fallecido';
-    const recovered = 'Recuperado';
-    const hospital = 'Hospital';
-    const hospitalUCI = 'Hospital UCI';
-    this.loading = true;
-    this.$subscription = combineLatest(
-      this.casesService.getTotalCases(),
-      this.casesService.getCasesByCity(),
-      this.casesService.getTotalCasesByAttention(death),
-      this.casesService.getTotalCasesByAttention(recovered),
-      this.casesService.getCasesByState(),
-      this.casesService.getCasesByAttention(recovered),
-      this.casesService.getCasesByAttention(death),
-      this.casesService.getCasesByAttention(recovered, 'departamento'),
-      this.casesService.getCasesByAttention(death, 'departamento'),
-    )
-      .subscribe(([totalCases$, casesByCity$, totalDeaths$, totalRecovered$, casesByState$, casesByRecovered$, casesBydeaths$, casesByRecoveredState$, casesBydeathsState$]) => {
-        this.totalCases = totalCases$.total;
-        this.totalDeaths = totalDeaths$[0].total;
-        this.totalRecovered = totalRecovered$[0].total;
-        this.casesConfirmed = {
-          cities: casesByCity$,
-          states: casesByState$,
-        };
+    this.loadingRecovered = this.loadingDeaths = this.loadingConfirmed = true;
 
-        this.casesRecovered = {
-          cities: casesByRecovered$,
-          states: casesByRecoveredState$,
-        };
+    this.casesDeathSuscription$ = this.covidService.getCasesDeaths()
+      .subscribe(response => {
+        this.casesDeaths = response;
+        this.loadingDeaths = false;
+      });
 
-        this.casesDeaths = {
-          cities: casesBydeaths$,
-          states: casesBydeathsState$,
-        };
+    this.casesConfirmedSuscription$ = this.covidService.getCases()
+      .subscribe(response => {
+        this.casesConfirmed = response;
+        this.loadingConfirmed = false;
+      });
 
-        this.loading = false;
+    this.casesRecoveredSuscription$ = this.covidService.getCasesRecovered()
+      .subscribe(response => {
+        this.casesRecovered = response;
+        this.loadingRecovered = false;
       });
   }
 
