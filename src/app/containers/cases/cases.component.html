@@ -3,52 +3,24 @@
     <app-card
       color="yellow"
       title="Casos Confirmados"
-      [loading]="loading"
-      [total]="totalCases"
+      [loading]="loadingConfirmed"
+      [total]="casesConfirmed.total"
     >
     </app-card>
     <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
       <mat-tab label="Ciudad">
         <app-card-list
           color="yellow"
-          [loading]="loading"
-          [items]="casesConfirmed.cities"
+          [loading]="loadingConfirmed"
+          [items]="casesConfirmed.casesByCity"
         >
         </app-card-list>
       </mat-tab>
       <mat-tab label="Departamento">
         <app-card-list
           color="yellow"
-          [loading]="loading"
-          [items]="casesConfirmed.states"
-        >
-        </app-card-list>
-      </mat-tab>
-    </mat-tab-group>
-    <mat-divider *ngIf="isMobile"></mat-divider>
-  </div>
-  <div class="col-md-4 col-lg-4 cols-xl-4">
-    <app-card
-      color="red"
-      title="Fallecidos"
-      [loading]="loading"
-      [total]="totalDeaths"
-    >
-    </app-card>
-    <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
-      <mat-tab label="Ciudad">
-        <app-card-list
-          color="red"
-          [loading]="loading"
-          [items]="casesDeaths.cities"
-        >
-        </app-card-list>
-      </mat-tab>
-      <mat-tab label="Departamento">
-        <app-card-list
-          color="red"
-          [loading]="loading"
-          [items]="casesDeaths.states"
+          [loading]="loadingConfirmed"
+          [items]="casesConfirmed.casesByState"
         >
         </app-card-list>
       </mat-tab>
@@ -59,8 +31,8 @@
     <app-card
       color="green"
       title="Recuperados"
-      [loading]="loading"
-      [total]="totalRecovered"
+      [loading]="loadingRecovered"
+      [total]="casesRecovered.total"
     >
     </app-card>
 
@@ -68,19 +40,47 @@
       <mat-tab label="Ciudad">
         <app-card-list
           color="green"
-          [loading]="loading"
-          [items]="casesRecovered.cities"
+          [loading]="loadingRecovered"
+          [items]="casesRecovered.casesByCity"
         >
         </app-card-list>
       </mat-tab>
       <mat-tab label="Departamento">
         <app-card-list
           color="green"
-          [loading]="loading"
-          [items]="casesRecovered.states"
+          [loading]="loadingRecovered"
+          [items]="casesRecovered.casesByState"
         >
         </app-card-list>
       </mat-tab>
     </mat-tab-group>
+  </div>
+  <div class="col-md-4 col-lg-4 cols-xl-4">
+    <app-card
+      color="red"
+      title="Fallecidos"
+      [loading]="loadingDeaths"
+      [total]="casesDeaths.total"
+    >
+    </app-card>
+    <mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
+      <mat-tab label="Ciudad">
+        <app-card-list
+          color="red"
+          [loading]="loadingDeaths"
+          [items]="casesDeaths.casesByCity"
+        >
+        </app-card-list>
+      </mat-tab>
+      <mat-tab label="Departamento">
+        <app-card-list
+          color="red"
+          [loading]="loadingDeaths"
+          [items]="casesDeaths.casesByState"
+        >
+        </app-card-list>
+      </mat-tab>
+    </mat-tab-group>
+    <mat-divider *ngIf="isMobile"></mat-divider>
   </div>
 </div>

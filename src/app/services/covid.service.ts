@@ -6,30 +6,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 // config
 import { environment } from '../../environments/environment';
 
-interface IQueryParams {
+interface Items {
   name: string;
-  value: string;
-}
-
-interface IReport {
   total: number;
-  name: string;
-  count: number;
 }
 
-interface ICovidResponse {
-  _id: string;
-  date: Date;
-  city: string;
-  state: string;
-  attention: string;
-  age: string;
-  gender: string;
-  type: string;
-  origin_country: string;
-  death_date: string;
-  recovered_date: string;
-  fis: Date;
+interface CasesResponse {
+  total: number;
+  casesByCity: Items[];
+  casesByState: Items[];
 }
 
 @Injectable({
@@ -37,30 +22,23 @@ interface ICovidResponse {
 })
 export class CovidService {
 
-  private readonly reportUrl = environment.api.getUrl('reportsV2');
+  private readonly casesUrl = environment.api.getUrl('cases');
+  private readonly casesDeathsUrl = environment.api.getUrl('casesDeaths');
+  private readonly casesRecoveredUrl = environment.api.getUrl('casesRecovered');
 
   constructor(
     private readonly http: HttpClient,
-  ) {
+  ) { }
+
+  public getCases(): Observable<CasesResponse[]> {
+    return this.http.get<CasesResponse[]>(this.casesUrl);
   }
 
-  private getQueryParams(queryParams: IQueryParams[]): string {
-    let result;
-    if (queryParams && queryParams.length > 0) {
-      let params = new HttpParams();
-      queryParams
-        .forEach((item) => {
-          params = params.set(item.name, item.value);
-        });
-      result = `?${params.toString()}`;
-    }
-    return result;
+  public getCasesRecovered(): Observable<CasesResponse[]> {
+    return this.http.get<CasesResponse[]>(this.casesRecoveredUrl);
   }
 
-  public getReports(queryParams?: IQueryParams[]): Observable<any[]> {
-    const params = this.getQueryParams(queryParams);
-    let url = this.reportUrl;
-    if (params) { url += params; }
-    return this.http.get<any[]>(url);
+  public getCasesDeaths(): Observable<CasesResponse[]> {
+    return this.http.get<CasesResponse[]>(this.casesDeathsUrl);
   }
 }
