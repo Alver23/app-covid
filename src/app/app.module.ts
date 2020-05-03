@@ -12,13 +12,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Modules
 import { CasesModule } from './containers/cases/cases.module';
 
+import { extModules } from './build-specifics';
+
 // Components
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CasesModule,
@@ -27,8 +30,17 @@ import { AppComponent } from './app.component';
     LayoutModule,
     MatSidenavModule,
     MatToolbarModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+      },
+    }),
+    EffectsModule.forRoot([]),
+    extModules,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
