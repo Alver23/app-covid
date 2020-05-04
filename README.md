@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/Alver23/app-covid.svg?branch=master)](https://travis-ci.com/Alver23/app-covid)
+[![Coverage Status](https://coveralls.io/repos/github/Alver23/app-covid/badge.svg?branch=master)](https://coveralls.io/github/Alver23/app-covid?branch=master)
 
 # App Covid
 
