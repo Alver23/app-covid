@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Alver23/app-covid.svg?branch=master)](https://travis-ci.com/Alver23/app-covid)
+
 # App Covid
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
