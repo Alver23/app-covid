@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 // config
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 interface Items {
   name: string;
@@ -30,15 +30,15 @@ export class CovidService {
     private readonly http: HttpClient,
   ) { }
 
-  public getCases(): Observable<CasesResponse[]> {
-    return this.http.get<CasesResponse[]>(this.casesUrl);
+  public getCases(): Observable<CasesResponse> {
+    return this.http.get<CasesResponse>(this.casesUrl);
   }
 
-  public getCasesRecovered(): Observable<CasesResponse[]> {
-    return this.http.get<CasesResponse[]>(this.casesRecoveredUrl);
+  public getCasesRecovered(): Observable<CasesResponse> {
+    return this.http.get<CasesResponse>(this.casesRecoveredUrl);
   }
 
-  public getCasesDeaths(): Observable<CasesResponse[]> {
-    return this.http.get<CasesResponse[]>(this.casesDeathsUrl);
+  public getCasesDeaths(): Observable<CasesResponse> {
+    return this.http.get<CasesResponse>(this.casesDeathsUrl);
   }
 }

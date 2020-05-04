@@ -3,9 +3,21 @@
     <mat-toolbar color="primary">
       <span>Covid-19 Dashboard</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
     <div class="container">
-      <app-cases></app-cases>
+      <div class="row">
+        <div class="col-md-4 col-lg-4 col-xl-4">
+          <app-cases-confirmed [tabHeaderPosition]="tabService.tabHeaderPosition"></app-cases-confirmed>
+          <mat-divider *ngIf="tabService.IsMobile"></mat-divider>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xl-4">
+          <app-cases-recovered [tabHeaderPosition]="tabService.tabHeaderPosition"></app-cases-recovered>
+          <mat-divider *ngIf="tabService.IsMobile"></mat-divider>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xl-4">
+          <app-cases-death [tabHeaderPosition]="tabService.tabHeaderPosition"></app-cases-death>
+          <mat-divider *ngIf="tabService.IsMobile"></mat-divider>
+        </div>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
