@@ -13,4 +13,4 @@ jobs:
     - stage: test
       script: "npm run test"
     - stage: Produce Coverage
-      script: "npm run coverall"
+      script: "npm run coveralls"
