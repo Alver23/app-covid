@@ -1,0 +1,25 @@
+<app-card
+  color="green"
+  title="Recuperados"
+  [loading]="loading$ | async"
+  [total]="((cases$ | async) || {}).total"
+>
+</app-card>
+<mat-tab-group [headerPosition]="tabHeaderPosition" mat-align-tabs="center">
+  <mat-tab label="Ciudad">
+    <app-card-list
+      color="green"
+      [loading]="loading$ | async"
+      [items]="((cases$ | async) || {}).casesByCity"
+    >
+    </app-card-list>
+  </mat-tab>
+  <mat-tab label="Departamento">
+    <app-card-list
+      color="green"
+      [loading]="loading$ | async"
+      [items]="((cases$ | async) || {}).casesByState"
+    >
+    </app-card-list>
+  </mat-tab>
+</mat-tab-group>

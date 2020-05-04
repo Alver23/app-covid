@@ -1,4 +1,9 @@
+// Dependencies
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+import { DeviceDetectorService } from 'ngx-device-detector';
+
+// Components
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -7,6 +12,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        DeviceDetectorService
+      ],
     }).compileComponents();
   }));
 
@@ -14,18 +23,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'app-covid'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('app-covid');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('app-covid app is running!');
   });
 });

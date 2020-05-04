@@ -1,5 +1,11 @@
+// Dependencies
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+// Modules
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+// Components
 import { CardListComponent } from './card-list.component';
 
 describe('CardListComponent', () => {
@@ -8,7 +14,9 @@ describe('CardListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardListComponent ]
+      declarations: [ CardListComponent ],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [ScrollingModule]
     })
     .compileComponents();
   }));
