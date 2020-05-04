@@ -12,3 +12,5 @@ jobs:
       script: "npm run lint"
     - stage: test
       script: "npm run test"
+    - stage: Produce Coverage
+      script: "npm run coveralls"

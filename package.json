@@ -9,7 +9,8 @@
     "test:watch": "npm run test -- --verbose --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release": "standard-version -a"
+    "release": "standard-version -a",
+    "coveralls": "npm run test && cat ./coverage/lcov.info | coveralls"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +48,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "coveralls": "^3.1.0",
     "husky": "^4.2.5",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
