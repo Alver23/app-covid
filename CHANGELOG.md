@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Alver23/app-covid/compare/v1.3.0...v1.4.0) (2020-05-05)
+
+### Features
+
+- add badge for coverage ([4ef562a](https://github.com/Alver23/app-covid/commit/4ef562a9a274ac9a809b48e979f9811e54fddc03))
+- add badge for build travis and coverage ([8b087d5](https://github.com/Alver23/app-covid/commit/8b087d5e8fd5b39a01edf70fac368e8b5bff6231))
+- change name to script coverage travis file ([0a9e513](https://github.com/Alver23/app-covid/commit/0a9e51365d36745b973dd94aba5554bb05241100))
+
 ## [1.3.0](https://github.com/Alver23/app-covid/compare/v1.2.0...v1.3.0) (2020-05-04)
 
 ### Features
