@@ -11,6 +11,7 @@
       color="green"
       [loading]="loading$ | async"
       [items]="((cases$ | async) || {}).casesByCity"
+      placeholder="Escriba la ciudad a buscar"
     >
     </app-card-list>
   </mat-tab>
@@ -19,6 +20,7 @@
       color="green"
       [loading]="loading$ | async"
       [items]="((cases$ | async) || {}).casesByState"
+      placeholder="Escriba el departamento a buscar"
     >
     </app-card-list>
   </mat-tab>

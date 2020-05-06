@@ -7,6 +7,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 // Components
 import { CardListComponent } from './card-list.component';
+import { SearchTextPipe } from '../../pipes/search-text/search-text.pipe';
 
 describe('CardListComponent', () => {
   let component: CardListComponent;
@@ -14,11 +15,10 @@ describe('CardListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardListComponent ],
+      declarations: [CardListComponent, SearchTextPipe],
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [ScrollingModule]
-    })
-    .compileComponents();
+      imports: [ScrollingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

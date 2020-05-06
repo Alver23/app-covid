@@ -4,14 +4,8 @@
   "testMatch": ["**/+(*.)+(spec).+(ts)"],
   "setupFilesAfterEnv": ["<rootDir>/src/test.ts"],
   "collectCoverage": true,
-  "collectCoverageFrom": [
-    "**/*ts",
-    "!**/*.module.ts",
-    "!**/*-mock.ts"
-  ],
-  "coveragePathIgnorePatterns": [
-    "src/app/build-specifics/",
-    "src/environments/"
-  ],
-  "coverageDirectory": "coverage"
+  "collectCoverageFrom": ["**/*ts", "!**/*.module.ts", "!**/*-mock.ts"],
+  "coveragePathIgnorePatterns": ["src/app/build-specifics/", "src/environments/"],
+  "coverageDirectory": "coverage",
+  "transformIgnorePatterns": ["node_modules/(?!@am)"]
 }
