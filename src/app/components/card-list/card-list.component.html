@@ -4,8 +4,11 @@
   </mat-card-header>
   <mat-divider *ngIf="title"></mat-divider>
   <mat-card-content>
+    <mat-form-field style="width: 100%">
+      <input type="text" matInput [matTooltip]="searchValue.length < 3 ?  'ingresa mínimo tres letras para ver resultados' : ''" [placeholder]="placeholder" [(ngModel)]="searchValue">
+    </mat-form-field>
     <cdk-virtual-scroll-viewport itemSize="20" [ngClass]="{'card-list__item-container': items }">
-      <ng-container *cdkVirtualFor="let item of items; isLast as last">
+      <ng-container *cdkVirtualFor="let item of items | searchText: {key: 'name', value: searchValue}; isLast as last">
         <div class="card-list__item">
           <span>{{ item.name }}</span>
           <span class="card-list__item-count" [ngClass]="color">{{ item.total | number }}</span>

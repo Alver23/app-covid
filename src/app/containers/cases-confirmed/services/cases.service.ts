@@ -1,6 +1,6 @@
 // Dependencies
-import {Observable} from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 
 // Models
@@ -12,23 +12,21 @@ import { getCases, getLoading } from '../store/selectors/cases-confirmed.selecto
 // Redux
 import { loadCasesConfirmed } from '../store/actions/cases-confirmed.actions';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CasesService {
-
-  constructor(private readonly store: Store<CasesConfirmed>) { }
+  constructor(private readonly store: Store<CasesConfirmed>) {}
 
   public loadCasesConfirmed() {
     this.store.dispatch(loadCasesConfirmed());
   }
 
   public getCases$(): Observable<CasesConfirmed> {
-    return this.store.select(getCases);
+    return this.store.pipe(select(getCases));
   }
 
   public getLoading$(): Observable<boolean> {
-    return this.store.select(getLoading);
+    return this.store.pipe(select(getLoading));
   }
 }
