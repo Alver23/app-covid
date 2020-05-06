@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/Alver23/app-covid/compare/v1.4.0...v1.5.0) (2020-05-06)
+
+### Features
+
+- add pipe for searching cities o states ([441496a](https://github.com/Alver23/app-covid/commit/441496a8b960ab25f56a5e08e06ba9a3931df24b))
+- add pipe for searching cities o states ([7ebcecd](https://github.com/Alver23/app-covid/commit/7ebcecdbefa8ac37adcbe4b82e5367d867e62e4e))
+
 ## [1.4.0](https://github.com/Alver23/app-covid/compare/v1.3.0...v1.4.0) (2020-05-05)
 
 ### Features
