@@ -1,5 +1,6 @@
 .sidenav-container {
-  height: 100%;
+  min-height: 90%;
+  position: relative;
 }
 
 .sidenav {
@@ -8,4 +9,38 @@
 
 .sidenav .mat-toolbar {
   background: inherit;
+}
+
+.footer {
+  align-items: center;
+  background: #673ab7;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 10%;
+  padding: 8px;
+  position: relative;
+  &__copyright {
+    text-align: center;
+  }
+
+  &__social-network {
+    text-align: center;
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      margin: 0;
+      padding: 0px;
+      li {
+        color: white;
+        list-style: none;
+        margin: 4px;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
 }
