@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material Modules
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 // Modules
 import { CasesDeathModule } from './containers/cases-deaths/cases-death.module';
@@ -19,14 +20,12 @@ import { CasesConfirmedModule } from './containers/cases-confirmed/cases-confirm
 
 import { extModules } from './build-specifics';
 
-
 // Components
 import { AppComponent } from './app.component';
 
-
 // Environment
 import { environment } from '../environments/environment';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,13 +36,16 @@ import {MatDividerModule} from '@angular/material/divider';
     LayoutModule,
     MatSidenavModule,
     MatToolbarModule,
-    StoreModule.forRoot({}, {
-      metaReducers: !environment.production ? [] : [],
-      runtimeChecks: {
-        strictActionImmutability: true,
-        strictStateImmutability: true,
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers: !environment.production ? [] : [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
       },
-    }),
+    ),
     EffectsModule.forRoot([]),
     extModules,
     CasesRecoveredModule,
@@ -51,6 +53,7 @@ import {MatDividerModule} from '@angular/material/divider';
     DeviceDetectorModule.forRoot(),
     CasesDeathModule,
     MatDividerModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
