@@ -3,6 +3,9 @@
 .sidenav-container {
   min-height: 90%;
   position: relative;
+  @include respond-to(tb dt) {
+    min-height: 96%;
+  }
 }
 
 .sidenav {
@@ -20,12 +23,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 10%;
+  min-height: 12%;
   padding: 12px;
   position: relative;
   @include respond-to(tb dt) {
     flex-direction: row;
     justify-content: space-between;
+    min-height: 4%;
     padding: 12px 20px;
   }
   &__copyright {
