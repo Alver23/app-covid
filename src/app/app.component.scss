@@ -1,3 +1,5 @@
+@import './../assets/scss/tools/response-to';
+
 .sidenav-container {
   min-height: 90%;
   position: relative;
@@ -19,14 +21,42 @@
   flex-direction: column;
   justify-content: center;
   min-height: 10%;
-  padding: 8px;
+  padding: 12px;
   position: relative;
+  @include respond-to(tb dt) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 20px;
+  }
   &__copyright {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    span {
+      margin: 4px;
+    }
+    @include respond-to(tb dt) {
+      flex-direction: row;
+      span {
+        margin: 4px 8px;
+      }
+    }
   }
 
   &__social-network {
     text-align: center;
+    span {
+      margin: 4px;
+    }
+    @include respond-to(tb dt) {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      span {
+        margin: 0 16px;
+      }
+    }
     ul {
       display: flex;
       flex-direction: row;
@@ -36,7 +66,10 @@
       li {
         color: white;
         list-style: none;
-        margin: 4px;
+        margin: 8px;
+        @include respond-to(tb dt) {
+          margin: auto 8px;
+        }
         a {
           color: white;
         }
