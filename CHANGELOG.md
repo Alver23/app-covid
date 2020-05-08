@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/Alver23/app-covid/compare/v1.7.0...v1.8.0) (2020-05-08)
+
+### Features
+
+- adjust css for footer ([1c882d4](https://github.com/Alver23/app-covid/commit/1c882d48843d02b977343177f19e7a8b6669295f))
+
 ## [1.7.0](https://github.com/Alver23/app-covid/compare/v1.6.0...v1.7.0) (2020-05-08)
 
 ### Features
