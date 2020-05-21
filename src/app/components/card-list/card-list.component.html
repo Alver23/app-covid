@@ -10,8 +10,15 @@
     <cdk-virtual-scroll-viewport itemSize="20" [ngClass]="{'card-list__item-container': items }">
       <ng-container *cdkVirtualFor="let item of items | searchText: {key: 'name', value: searchValue}; isLast as last">
         <div class="card-list__item">
-          <span>{{ item.name }}</span>
-          <span class="card-list__item-count" [ngClass]="color">{{ item.total | number }}</span>
+          <span>
+            <span>
+              {{ item.name }}
+            </span>
+            <span class="card-list__item-count" [ngClass]="color">{{ item.total | number }}</span>
+          </span>
+          <ng-container *ngIf="type">
+            <span class="card-list__item-view-detail" (click)="onViewReport(item.name)"><mat-icon>remove_red_eye</mat-icon></span>
+          </ng-container>
         </div>
         <mat-divider *ngIf="!last"></mat-divider>
       </ng-container>

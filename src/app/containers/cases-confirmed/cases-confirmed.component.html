@@ -12,6 +12,7 @@
       [loading]="loading$ | async"
       [items]="((cases$ | async) || {}).casesByCity"
       placeholder="Escriba la ciudad a buscar"
+      type="city"
     >
     </app-card-list>
   </mat-tab>
@@ -21,6 +22,7 @@
       [loading]="loading$ | async"
       [items]="((cases$ | async) || {}).casesByState"
       placeholder="Escriba el departamento a buscar"
+      type="state"
     >
     </app-card-list>
   </mat-tab>

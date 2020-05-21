@@ -1,0 +1,67 @@
+@import './../../../assets/scss/tools/response-to';
+
+.footer {
+  align-items: center;
+  background: #673ab7;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 12%;
+  padding: 12px;
+  position: relative;
+  @include respond-to(tb dt) {
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 4%;
+    padding: 12px 20px;
+  }
+  &__copyright {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    span {
+      margin: 4px;
+    }
+    @include respond-to(tb dt) {
+      flex-direction: row;
+      span {
+        margin: 4px 8px;
+      }
+    }
+  }
+
+  &__social-network {
+    text-align: center;
+    span {
+      margin: 4px;
+    }
+    @include respond-to(tb dt) {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      span {
+        margin: 0 16px;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      margin: 0;
+      padding: 0px;
+      li {
+        color: white;
+        list-style: none;
+        margin: 8px;
+        @include respond-to(tb dt) {
+          margin: auto 8px;
+        }
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}

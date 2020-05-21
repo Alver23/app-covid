@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <span>Reporte > <b>Cali</b></span>
+  <div class="row">
+    <div class="col-md-12 col-lg-4 col-xl-4">
+      <app-card
+        color="yellow"
+        title="Casos Confirmados"
+        [loading]="false"
+        total="11600"
+      >
+      </app-card>
+    </div>
+    <div class="col-md-12 col-lg-4 col-xl-4">
+      <app-card
+        color="green"
+        title="Recuperados"
+        [loading]="false"
+        total="4000"
+      >
+      </app-card>
+    </div>
+    <div class="col-md-12 col-lg-4 col-xl-4">
+      <app-card
+        color="red"
+        title="Fallecidos"
+        [loading]="false"
+        total="400"
+      >
+      </app-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-lg-6 col-xl-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span>Distribución <b>por edad</b></span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <span>Distribución <b>por edad</b></span>
+          <mat-tab-group>
+            <mat-tab label="Confirmados">
+              <canvas id="report"></canvas>
+            </mat-tab>
+            <mat-tab label="Recuperados">
+              <h1>Some more tab content</h1>
+              <p>...</p>
+            </mat-tab>
+            <mat-tab label="Fallecidos">
+              <h1>Some more tab content</h1>
+              <p>...</p>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-12 col-lg-6 col-xl-6">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <span>Distribución <b>por sexo</b></span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-tab-group>
+            <mat-tab label="Confirmados">
+              <span>Confirmados</span>
+            </mat-tab>
+            <mat-tab label="Recuperados">
+              <h3>Recuperados</h3>
+            </mat-tab>
+            <mat-tab label="Fallecidos">
+              <h3>Fallecidos</h3>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
