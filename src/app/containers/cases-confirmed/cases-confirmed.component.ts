@@ -21,13 +21,12 @@ export class CasesConfirmedComponent implements OnInit {
   @Input() tabHeaderPosition: string;
 
   constructor(
-    private readonly casesService: CasesService
+    private readonly casesService: CasesService,
   ) { }
 
   ngOnInit(): void {
     this.cases$ = this.casesService.getCases$();
     this.loading$ = this.casesService.getLoading$();
-    this.casesService.loadCasesConfirmed();
   }
 
 }

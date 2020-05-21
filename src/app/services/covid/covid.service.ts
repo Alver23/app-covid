@@ -3,19 +3,11 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
+import { CasesResponse, ReportResponse } from './covid-service-interface';
+
 // config
 import { environment } from '../../../environments/environment';
 
-interface Items {
-  name: string;
-  total: number;
-}
-
-interface CasesResponse {
-  total: number;
-  casesByCity: Items[];
-  casesByState: Items[];
-}
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +32,10 @@ export class CovidService {
 
   public getCasesDeaths(): Observable<CasesResponse> {
     return this.http.get<CasesResponse>(this.casesDeathsUrl);
+  }
+
+  public getReport(field, value): Observable<ReportResponse> {
+    const url = `${this.casesUrl}/${field}/${value}/summary`;
+    return this.http.get<ReportResponse>(url);
   }
 }

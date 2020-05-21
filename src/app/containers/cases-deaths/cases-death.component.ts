@@ -25,7 +25,6 @@ export class CasesDeathComponent implements OnInit {
   ngOnInit(): void {
     this.cases$ = this.casesService.getCases$();
     this.loading$ = this.casesService.getLoading$();
-    this.casesService.loadCases();
   }
 
 }

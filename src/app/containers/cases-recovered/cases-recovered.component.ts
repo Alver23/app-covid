@@ -24,7 +24,6 @@ export class CasesRecoveredComponent implements OnInit {
   ngOnInit(): void {
     this.cases$ = this.casesService.getCases$();
     this.loading$ = this.casesService.getLoading$();
-    this.casesService.loadCases();
   }
 
 }

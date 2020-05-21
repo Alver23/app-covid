@@ -17,6 +17,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // Pipes
 import { SearchTextPipe } from '../../pipes/search-text/search-text.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [CardListComponent, SearchTextPipe],
@@ -31,6 +33,7 @@ import { SearchTextPipe } from '../../pipes/search-text/search-text.pipe';
     NgxSkeletonLoaderModule,
     FormsModule,
     MatTooltipModule,
+    MatIconModule,
   ],
 })
 export class CardListModule {}

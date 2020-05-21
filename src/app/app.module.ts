@@ -13,22 +13,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
-// Modules
-import { CasesDeathModule } from './containers/cases-deaths/cases-death.module';
-import { CasesRecoveredModule } from './containers/cases-recovered/cases-recovered.module';
-import { CasesConfirmedModule } from './containers/cases-confirmed/cases-confirmed.module';
-
 import { extModules } from './build-specifics';
+import { RoutingModule } from './routing/routing.module';
 
 // Components
 import { AppComponent } from './app.component';
 
 // Environment
 import { environment } from '../environments/environment';
-import { MatDividerModule } from '@angular/material/divider';
+import { FooterComponent } from './components/footer/footer.component';
+import {HeaderModule} from './components/header/header.module';
+import {MatListModule} from '@angular/material/list';
+import {HomeModule} from './containers/home/home.module';
+import {SummaryReportModule} from './containers/summary-report/summary-report.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -48,12 +48,13 @@ import { MatDividerModule } from '@angular/material/divider';
     ),
     EffectsModule.forRoot([]),
     extModules,
-    CasesRecoveredModule,
-    CasesConfirmedModule,
     DeviceDetectorModule.forRoot(),
-    CasesDeathModule,
-    MatDividerModule,
     MatIconModule,
+    RoutingModule,
+    HeaderModule,
+    MatListModule,
+    HomeModule,
+    SummaryReportModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

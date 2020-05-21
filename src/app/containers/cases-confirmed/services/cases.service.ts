@@ -18,7 +18,7 @@ import { loadCasesConfirmed } from '../store/actions/cases-confirmed.actions';
 export class CasesService {
   constructor(private readonly store: Store<CasesConfirmed>) {}
 
-  public loadCasesConfirmed() {
+  public loadCases() {
     this.store.dispatch(loadCasesConfirmed());
   }
 
