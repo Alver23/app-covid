@@ -28,7 +28,7 @@
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^5.0.0",
     "ngx-device-detector": "^1.4.2",
     "ngx-skeleton-loader": "^1.2.7",
     "rxjs": "~6.5.4",
